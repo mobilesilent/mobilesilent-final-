@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Form</title>
+</head>
+<body>
+
+    <form action="#" method="post">
+          {% csrf_token %}
+        <div class="form-group">
+            <label for="department">Department</label>
+            <input type="text" id="department" name="department" required />
+        </div>
+        <div>
+            <input type="submit" value="Add">
+        </div>
+    </form>
+
+</body>
+</html>

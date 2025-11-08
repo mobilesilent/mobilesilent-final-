@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      padding: 40px;
+    }
+
+    table {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .reply-btn {
+      background-color: #28a745;
+      color: white;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .reply-btn:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+    <h2 style="text-align:center;">Teacher verification panel</h2>
+   <table>
+    <thead>
+      <tr>
+        
+        <th>Name</th>
+        <th>Department</th>
+        <th>E_mail</th>
+        <th>Phone_No</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in c %}
+      <tr>
+        <td>{{i.name}}</td>
+        <td>{{i.department}}</td>
+        <td>{{i.email}}</td>
+        <td>{{i.phone_no}}</td>
+        <td>
+          <a href="/acceptteacher/{{i.id}}">Accept</a>
+          <a href="">Reject</a>
+        </td>
+      </tr>
+      </tbody>
+      {% endfor %}
+</body>
+</html>

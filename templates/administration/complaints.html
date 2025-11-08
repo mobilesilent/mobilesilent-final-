@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Complaint View</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      padding: 40px;
+    }
+
+    table {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      border-collapse: collapse;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .reply-btn {
+      background-color: #28a745;
+      color: white;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .reply-btn:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 style="text-align:center;">Complaint View</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Complaint</th>
+        <th>Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in val %}
+      <tr>
+        <td>{{ i.user_id.name }}</td>
+        <td>{{ i.complaints }}</td>
+        <td>{{i.date}}</td>
+        {% if i.reply %}
+        <td>{{i.reply}}</td>
+        {% else %}
+        <td><button onclick="window.location='Reply/{{i.id}}'">Reply</button></td>
+        {% endif %}
+      </tr>
+        {% endfor %}
+      <!-- You can duplicate this <tr> block for more complaints -->
+    </tbody>
+  </table>
+
+</body>
+</html>
