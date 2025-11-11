@@ -41,6 +41,8 @@ urlpatterns = [
     path('ManageTeacher',ManageTeacher.as_view(),name="ManageTeacher"),
     path('DeleteDepartment/<int:id>',DeleteDepartment.as_view(),name="DeleteDepartment"),
     path('DeleteClassroom/<int:id>',DeleteClassroom.as_view(),name="DeleteClassroom"),
+    path('Teacher_Home',Teacher_Home.as_view(),name="Teacher_Home"),
+    path('Viewstudent',View_Student.as_view(),name="View_Student"),
 
 
 

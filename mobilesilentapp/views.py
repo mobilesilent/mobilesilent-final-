@@ -20,6 +20,8 @@ class LoginPage(View):
             # Handle based on user type
             if obj.user_type =='admin':
                 return HttpResponse('''<script>alert("Wlcome back");window.location='/Admin_home'</script>''')
+            elif obj.user_type =='teacher':
+                return HttpResponse('''<script>alert("Wlcome back");window.location='/Teacher_Home'</script>''') 
             else:
                 return HttpResponse('''<script>alert("User not found");window.location='/'</sript>''')
         except LoginTable.DoesNotExist:
@@ -170,6 +172,7 @@ class TeacherRegistaraion(View):
             r.save()
             return HttpResponse('''<script>alert('Registration Successful');window.location='/'</script>''')
         
+
 class ManageTeacher(View):
     def get(self,request):
         obj=TeacherTable.objects.all()
@@ -211,7 +214,16 @@ class RejectTeacher(View):
         c.login_id.user_type = 'rejected'
         c.login_id.save()
         return redirect('/teacher')
+    
+class Teacher_Home(View):
+     def get(self,request):
+        return render(request,"teacher/teacher_home.html")
 
+    
+class View_Student(View):
+    def get(self,request):
+        obj=StudentTable.objects.all()
+        return render(request,"teacher/view_student.html",{'obje':obj})
 
         ################################################################API###########################
 
