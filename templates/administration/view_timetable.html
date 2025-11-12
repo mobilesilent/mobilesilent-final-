@@ -39,6 +39,7 @@
 <body>
     <h1>Timetable</h1>
     <form method="post" action="/view_timtable_action">
+        {% csrf_token %}
         <div class="day-selector">
             <label for="day">Select Day:</label>
             <select name="day" id="day">

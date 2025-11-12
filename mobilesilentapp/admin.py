@@ -11,3 +11,6 @@ admin.site.register(FeedbackTable),
 admin.site.register(ComplaintTable),
 admin.site.register(TeacherTable)
 admin.site.register(DepartmentTable)
+admin.site.register(ClassTable)
+admin.site.register(SubjectTable)
+admin.site.register(Timetable1)

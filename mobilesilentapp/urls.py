@@ -1,4 +1,5 @@
 
+from django import views
 from django.contrib import admin
 from django.urls import include, path
 
@@ -20,11 +21,12 @@ urlpatterns = [
     path('Timing', TimingView.as_view(), name='Timing'),
     path('acceptteacher/<int:id>', AcceptTeacher.as_view()),
     path('rejectteacher/<int:id>', RejectTeacher.as_view()),
+    path("manage_timetable",manage_timetable.as_view(), name="manage_timetable"),
+    path("add_timetable_action",add_timetable_action.as_view(), name="add_timetable_action"),
+    path("select_class_staff/",select_class_staff.as_view(), name="select_class_staff"),
+    path("view_timetable",View_timetable.as_view(), name="view_timetable"),
 
-
-
-
-
+    
 # ////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -43,8 +45,7 @@ urlpatterns = [
     path('DeleteClassroom/<int:id>',DeleteClassroom.as_view(),name="DeleteClassroom"),
     path('Teacher_Home',Teacher_Home.as_view(),name="Teacher_Home"),
     path('Viewstudent',View_Student.as_view(),name="View_Student"),
-
-
+    path("view_timtable_action", view_timtable_action.as_view(), name="view_timtable_action"),
 
     ##########################api########################3
 
