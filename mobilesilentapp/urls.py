@@ -23,8 +23,8 @@ urlpatterns = [
     path('rejectteacher/<int:id>', RejectTeacher.as_view()),
     path("manage_timetable",manage_timetable.as_view(), name="manage_timetable"),
     path("add_timetable_action",add_timetable_action.as_view(), name="add_timetable_action"),
-    path("select_class_staff/",select_class_staff.as_view(), name="select_class_staff"),
-    path("view_timetable",View_timetable.as_view(), name="view_timetable"),
+    path("select_class1/",select_class_staff.as_view(), name="select_class_staff"),
+    path("view_timetable",view_timetable1.as_view(), name="view_timetable"),
 
     
 # ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -37,8 +37,7 @@ urlpatterns = [
     path('Timetable',Timetable.as_view(),name="Timetable"),
     path('Teacherregistration',Teacherregistration.as_view(),name="Teacherregistration"),
     path('Admin_home',Admin_home.as_view(),name="Admin_home"),
-    path('View_timetable',View_timetable.as_view(),name="View_timetable"),
-    path('Select_class',Select_class.as_view(),name="Select_class"),
+    path('Select_class',Select_class.as_view(),name=" "),
     path('Timetable_new',Timetable_new.as_view(),name="Timetable_new"),
     path('ManageTeacher',ManageTeacher.as_view(),name="ManageTeacher"),
     path('DeleteDepartment/<int:id>',DeleteDepartment.as_view(),name="DeleteDepartment"),

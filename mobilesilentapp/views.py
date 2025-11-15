@@ -102,7 +102,7 @@ class select_class(View):
     return render(request, "HOD/select_class.html", {'obj': obj})
    
 class manage_timetable(View):
-  def post(request):
+  def post(self, request):
     class_id=request.POST['class_id']
     request.session['class_id']=class_id
     class_obj = ClassTable.objects.get(id=class_id)
@@ -110,45 +110,44 @@ class manage_timetable(View):
     existing_days = Timetable1.objects.filter(CLASS_id=class_obj).values_list('day', flat=True)
     all_days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
     available_days = [day for day in all_days if day not in existing_days]
-    return render(request, 'HOD/manage_timetable.html', {
+    print("-------------------->", available_days)
+    return render(request, 'administration/manage_timetable.html', {
         'subjects': subjects,
         'available_days': available_days
     })
   
 class add_timetable_action(View):
-  def post(request):
+  def post(self,request):
     day = request.POST['day']
     slot_9_10 = request.POST['slot_9_10']
     slot_10_11 = request.POST['slot_10_11']
     slot_11_12 = request.POST['slot_11_12']
-    slot_1_2 = request.POST['slot_1_2']
+    slot_12_1 = request.POST['slot_12_1']
     slot_2_3 = request.POST['slot_2_3']
-    slot_3_4 = request.POST['slot_3_4']
     obj = Timetable1()
     obj.CLASS=ClassTable.objects.get(id=request.session['class_id'])
     obj.day=day
     obj.slot_9_10=SubjectTable.objects.get(id=slot_9_10)
     obj.slot_10_11=SubjectTable.objects.get(id=slot_10_11)
     obj.slot_11_12=SubjectTable.objects.get(id=slot_11_12)
-    obj.slot_1_2=SubjectTable.objects.get(id=slot_1_2)
+    obj.slot_12_1=SubjectTable.objects.get(id=slot_12_1)
     obj.slot_2_3=SubjectTable.objects.get(id=slot_2_3)
-    obj.slot_3_4=SubjectTable.objects.get(id=slot_3_4)
     obj.save()
-    return HttpResponse('''<script>alert("successfully added");window.location="/select_class#about"</script>''')
+    return HttpResponse('''<script>alert("successfully added");window.location="/select_class1#about"</script>''')
   
 class select_class_staff(View):
- def get(request):
+ def get(self, request):
     obj = ClassTable.objects.all()
-    return render(request, "staff/select_class.html", {'obj': obj})
+    return render(request, "administration/select_class.html", {'obj': obj})
  
 class view_timetable1(View):
-  def post(request):
+  def post(self, request):
     class_id=request.POST['class_id']
     # Query all timetable entries from the database
     timetable_entries = Timetable1.objects.filter(CLASS_id=class_id).order_by('day')
 
     # Render the timetable in a template
-    return render(request, 'staff/timetable.html', {'timetable_entries': timetable_entries})
+    return render(request, 'teacher/timetable_new.html', {'timetable_entries': timetable_entries})
   
   
 
@@ -212,7 +211,8 @@ class ManageTimetable(View):
 class Select_class(View):
     def get(self, request):
         obj = ClassTable.objects.all()
-        return render(request, "teacher/select_class.html", {'obj': obj})    
+        return render(request, "teacher/select_class.html", {'obj': obj}) 
+       
 class View_timetable(View):
     def get(self,request):
         return render(request,"administration/View_timetable.html")

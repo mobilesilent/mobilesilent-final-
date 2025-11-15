@@ -1,0 +1,77 @@
+
+{% block body %}
+
+<form id="form1" name="form1" method="post" action="add_timetable_action" enctype="multipart/form-data">
+  {% csrf_token %}
+  <table width="200" border="1" class="table table-dark table-hover">
+      <tr>
+      <td>Day</td>
+      <td>
+        <select name='day'>
+          {% for day in available_days %}
+            <option value="{{ day }}">{{ day }}</option>
+          {% endfor %}
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>slot_9_10</td>
+      <td>
+        <select name='slot_9_10'>
+          {% for i in subjects %}
+          <option value={{ i.id }}>{{ i.Subject }}</option>
+          {%endfor%}
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>slot_10_11</td>
+      <td>
+        <select name='slot_10_11'>
+          {% for i in subjects %}
+          <option value={{ i.id }}>{{ i.Subject }}</option>
+          {%endfor%}
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>slot_11_12</td>
+      <td>
+        <select name='slot_11_12'>
+          {% for i in subjects %}
+          <option value={{ i.id }}>{{ i.Subject }}</option>
+          {%endfor%}
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>slot_12_1</td>
+      <td>
+        <select name='slot_12_1'>
+          {% for i in subjects %}
+          <option value={{ i.id }}>{{ i.Subject }}</option>
+          {%endfor%}
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>slot_2_3</td>
+      <td>
+        <select name='slot_2_3'>
+          {% for i in subjects %}
+          <option value={{ i.id }}>{{ i.Subject }}</option>
+          {%endfor%}
+        </select>
+      </td>
+    </tr>
+      
+    <tr>
+      <td colspan="2"><div align="center">
+        <input type="submit" name="Submit" value="ADD" />
+      </div></td>
+    </tr>
+  </table>
+</form>
+{#</body>#}
+{#</html>#}
+{% endblock %}
