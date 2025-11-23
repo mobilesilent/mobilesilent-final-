@@ -6,15 +6,24 @@ class LoginTable(models.Model):
     password = models.CharField(max_length=30,null=True)
     user_type = models.CharField(max_length=50,null=True,blank=True)
     
+class DepartmentTable(models.Model):
+    department=models.CharField(max_length=30,null=True,blank=True)
+    
+class ClassTable(models.Model):
+    ClassName = models.CharField(max_length=30, blank=True, null=True)
+    department = models.ForeignKey(DepartmentTable, on_delete=models.CASCADE)
+    sem = models.CharField(max_length=30, blank=True, null=True)
+    created_at = models.DateField(auto_now_add=True)
+
 class StudentTable(models.Model):
     name = models.CharField(max_length=30,null=True,blank=True)
     admission_no = models.CharField(max_length=30,null=True,blank=True)
     department = models.CharField(max_length=30,null=True,blank=True)
-    class_name = models.CharField(max_length=30,null=True,blank=True)
     semester = models.CharField(max_length=30,null=True,blank=True)
     email_id = models.CharField(max_length=30,null=True,blank=True)
     phone_no = models.BigIntegerField(null=True,blank=True)
     LOGIN=models.ForeignKey(LoginTable,on_delete=models.CASCADE,null=True,blank=True)
+    CLASS=models.ForeignKey(ClassTable,on_delete=models.CASCADE,null=True,blank=True)
 
 class ClassroomTable(models.Model):
     department = models.CharField(max_length=30,null=True,blank=True)
@@ -48,15 +57,7 @@ class TeacherTable(models.Model):
     class_name = models.CharField(max_length=30,null=True,blank=True)
 
 
-class DepartmentTable(models.Model):
-    department=models.CharField(max_length=30,null=True,blank=True)
 
-
-class ClassTable(models.Model):
-    ClassName = models.CharField(max_length=30, blank=True, null=True)
-    department = models.ForeignKey(DepartmentTable, on_delete=models.CASCADE)
-    sem = models.CharField(max_length=30, blank=True, null=True)
-    created_at = models.DateField(auto_now_add=True)
 
 
 class SubjectTable(models.Model):

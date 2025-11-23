@@ -25,7 +25,6 @@ urlpatterns = [
     path("add_timetable_action",add_timetable_action.as_view(), name="add_timetable_action"),
     path("select_class1/",select_class_staff.as_view(), name="select_class_staff"),
     path("view_timetable",view_timetable1.as_view(), name="view_timetable"),
-
     
 # ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -53,6 +52,7 @@ urlpatterns = [
     path('feedback_api/<int:id>', AddReview.as_view(), name='feedback_api'),
     path('complaint_api/<int:id>', AddComplaintAPI.as_view(), name='complaint_api'),
     path('timings_api/', TimingAPI.as_view(), name='timings_api'),
+    path('ViewTimeTable/<int:lid>', ViewTimeTable.as_view(), name="ViewTimeTable"),
 
 
 

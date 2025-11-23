@@ -4,7 +4,7 @@ from mobilesilentapp.models import *
 class StuentForm(ModelForm):
     class Meta:
         model=StudentTable
-        fields=['name','admission_no','department','class_name','semester','email_id','phone_no']
+        fields=['name','admission_no','department','semester','email_id','phone_no']
 class ClassroomForm(ModelForm):
     class Meta:
         model=ClassroomTable

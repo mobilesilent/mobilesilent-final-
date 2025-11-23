@@ -428,3 +428,13 @@ class TimingAPI(APIView):
         except Exception as e:
             print("❌ Error fetching timings:", e)
             return Response({"error": "Failed to fetch timings"}, status=status.HTTP_400_BAD_REQUEST)
+        
+class ViewTimeTable(APIView):
+    def get(self, request,lid):
+        obj = StudentTable.objects.get(LOGIN=lid)
+        obj = Timetable1.objects.filter(CLASS_id=obj.CLASS.id)
+        serializer = TimetableSerializer(obj, many = True)
+        print("time----------------> ", serializer.data)
+        return Response(serializer.data)
+    
+    
