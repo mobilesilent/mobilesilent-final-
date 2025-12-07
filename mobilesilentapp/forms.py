@@ -24,7 +24,7 @@ class ComplaintsForm(ModelForm):
 class TeacherregistrationForm(ModelForm):
     class Meta:
         model=TeacherTable
-        fields=['name','department','email','phone_no','address','class_name']
+        fields=['name','Department','email','phone_no','address']
 
 class ReplyForm(ModelForm):
     class Meta:

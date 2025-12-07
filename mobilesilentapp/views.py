@@ -88,10 +88,11 @@ class TeacherRegister(View):
         print(obj)
         return render(request,"administration/Register.html",{'dept':obj} )
     def post(self,request):
-        c=TeacherregistrationForm(request.POST,request.FILES)
+        c=TeacherregistrationForm(request.POST)
+        print("--------------", request.POST)
         if c.is_valid():
             r=c.save(commit=False)
-            l=LoginTable.objects.create(username = request.POST.get('username'), password = request.POST.get('password'), user_type = 'teacher')
+            l=LoginTable.objects.create(username = request.POST.get('username'), password = request.POST.get('password'), user_type = 'pending')
             r.login_id=l
             r.save()
             return HttpResponse('''<script>alert('Registration Successful');window.location='/'</script>''')
@@ -285,8 +286,40 @@ class Teacher_Home(View):
     
 class View_Student(View):
     def get(self,request):
-        obj=StudentTable.objects.all()
+        t_obj = TeacherTable.objects.get(login_id=request.session['user_id'])
+        obj=StudentTable.objects.filter(CLASS__department_id=t_obj.Department.id)
         return render(request,"teacher/view_student.html",{'obje':obj})
+    
+class manage_class(View):
+    def get(self,request):
+        obj = ClassTable.objects.all()
+        return render(request, "administration/manage_class.html", {'obj': obj})
+
+class add_class(View):
+    def get(self,request):
+        obj=DepartmentTable.objects.all()
+        return render(request, "administration/add_class.html", {'obj':obj})
+
+class add_class_post(View):
+    def post(self,request):
+        dept = request.POST['dept']
+        class_name = request.POST['textfield']
+        # semester = request.POST['textfield1']
+        ob = ClassTable()
+        ob.ClassName = class_name
+        # ob.sem = semester
+        ob.department = DepartmentTable.objects.get(id=dept)
+        ob.save()
+        return HttpResponse('''<script>alert("class Added ");window.location="/manage_class#about"</script>''')
+
+class delete_class(View):
+    def get(self,request, class_id):
+        obj = ClassTable.objects.get(id=class_id)
+        obj.delete()
+        return HttpResponse('''<script>alert("Class Deleted ");window.location="/manage_class#about"</script>''')
+
+
+
 
         ################################################################API###########################
 
@@ -432,9 +465,23 @@ class TimingAPI(APIView):
 class ViewTimeTable(APIView):
     def get(self, request,lid):
         obj = StudentTable.objects.get(LOGIN=lid)
-        obj = Timetable1.objects.filter(CLASS_id=obj.CLASS.id)
+        obj = Timetable1.objects.filter(CLASS_id=obj.CLASS.id)        
         serializer = TimetableSerializer(obj, many = True)
         print("time----------------> ", serializer.data)
         return Response(serializer.data)
+    
+class ViewClassRooms(APIView):
+    def get(self, request):
+        c= ClassTable.objects.all()
+        serializer=ClassRoomSerializer(c, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+    
+class ViewDepartmentApi(APIView):
+    def get(self, request):
+        c= DepartmentTable.objects.all()
+        serializer=DepartmentSerializer(c, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
     
     

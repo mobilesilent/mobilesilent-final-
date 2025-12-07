@@ -113,23 +113,11 @@ select {
        <tr>
           <td>Department:</td>
           <td>
-            <select name="department" required>
+            <select name="Department" required>
               <option value="">Select a department</option>
               {% for i in dept %}
-              <option value="{{ i.department }}">{{ i.department }}</option>
+              <option value="{{ i.id }}">{{ i.department }}</option>
               {% endfor %}
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td>Class Name :</td>
-          <td>
-            <select name="class_name">
-              <option value="BCA">BCA</option>
-              <option value="Bsc Computer Science">Bsc Computer Science</option>
-              <option value="Bsc Physics">Bsc Physics</option>
-              <option value="Bsc Chemistry">Bsc Chemistry</option>
-              <option value="Bsc Psychology">Bsc Psychology</option>
             </select>
           </td>
         </tr>

@@ -37,4 +37,14 @@ class TimetableSerializer(serializers.ModelSerializer):
     subject5 = serializers.CharField(source='slot_2_3.Subject')
     class Meta:
         model = Timetable1
-        fields = ['day', 'subject1','subject2', 'subject3', 'subject4', 'subject5']  # Include relevant fields like id and name
+        fields = ['day', 'subject1','subject2', 'subject3', 'subject4', 'subject5'] 
+
+class ClassRoomSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=ClassTable
+        fields='__all__'
+
+class DepartmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=DepartmentTable
+        fields='__all__'

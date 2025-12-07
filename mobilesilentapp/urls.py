@@ -44,6 +44,10 @@ urlpatterns = [
     path('Teacher_Home',Teacher_Home.as_view(),name="Teacher_Home"),
     path('Viewstudent',View_Student.as_view(),name="View_Student"),
     path("view_timtable_action", view_timtable_action.as_view(), name="view_timtable_action"),
+    path("manage_class",manage_class.as_view(), name="manage_class"),
+    path("add_class",add_class.as_view(), name="add_class"),
+    path("add_class_post",add_class_post.as_view(), name="add_class_post"),
+    path("delete_class/<int:class_id>",delete_class.as_view(), name="delete_class"),
 
     ##########################api########################3
 
@@ -53,7 +57,7 @@ urlpatterns = [
     path('complaint_api/<int:id>', AddComplaintAPI.as_view(), name='complaint_api'),
     path('timings_api/', TimingAPI.as_view(), name='timings_api'),
     path('ViewTimeTable/<int:lid>', ViewTimeTable.as_view(), name="ViewTimeTable"),
-
-
+    path('ViewClassrooms', ViewClassRooms.as_view(), name="ViewClassrooms"),
+    path('ViewDepartmentApi',ViewDepartmentApi.as_view(),name="ViewDepartmentApi"),
 
 ]

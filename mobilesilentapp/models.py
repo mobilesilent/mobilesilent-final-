@@ -49,12 +49,11 @@ class ComplaintTable(models.Model):
 
 class TeacherTable(models.Model):
     login_id =models.ForeignKey(LoginTable,on_delete=models.CASCADE,null=True,blank=True)
+    Department =models.ForeignKey(DepartmentTable,on_delete=models.CASCADE,null=True,blank=True)
     name =models.CharField(max_length=30,null=True,blank=True)
-    department =models.CharField(max_length=30,null=True,blank=True)
     email =models.CharField(max_length=30,null=True,blank=True)
     phone_no =models.BigIntegerField(null=True,blank=True)
     address=models.CharField(max_length=50,null=True,blank=True)
-    class_name = models.CharField(max_length=30,null=True,blank=True)
 
 
 

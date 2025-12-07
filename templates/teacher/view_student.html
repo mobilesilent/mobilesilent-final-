@@ -82,12 +82,13 @@
       {% for i in obje %}
         <tr>
             <td>{{ i.name }}</td>
-            <td>{{ i.administration }}</td>
-            <td>{{ i.department }}</td>
-            <td>{{ i.class_name }}</td>
+            <td>{{ i.admission_no }}</td>
+            <td>{{ i.CLASS.department.department }}</td>
+            <td>{{ i.CLASS.ClassName }}</td>
             <td>{{ i.semester }}</td>
             <td>{{ i.email_id }}</td>
             <td>{{ i.phone_no }}</td>
+         
 
               <td><a href="view_student.html" class="delete-btn">Delete</a></td>
         </tr>
@@ -95,7 +96,6 @@
     </tbody>
     <tr>
         <td>
-    <a href="/" class="add-btn">AddNew</a>
 </td>
 
     </tr>
