@@ -1,77 +1,101 @@
-
 {% block body %}
 
 <form id="form1" name="form1" method="post" action="add_timetable_action" enctype="multipart/form-data">
   {% csrf_token %}
-  <table width="200" border="1" class="table table-dark table-hover">
-      <tr>
-      <td>Day</td>
-      <td>
-        <select name='day'>
+  <table style="width: 400px; margin: 50px auto; border-collapse: collapse; background-color: #ffffff; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+    <tr style="background-color: #6a1b9a; color: white;">
+      <th colspan="2" style="padding: 12px 16px; text-align: center;">Add Timetable</th>
+    </tr>
+    <tr>
+      <td style="padding: 12px 16px;">Day</td>
+      <td style="padding: 12px 16px;">
+        <select name='day' style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #ccc;">
           {% for day in available_days %}
             <option value="{{ day }}">{{ day }}</option>
           {% endfor %}
         </select>
       </td>
     </tr>
+
     <tr>
-      <td>slot_9_10</td>
-      <td>
-        <select name='slot_9_10'>
+      <td style="padding: 12px 16px;">slot_9_10</td>
+      <td style="padding: 12px 16px;">
+        <select name='slot_9_10' style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #ccc;">
           {% for i in subjects %}
-          <option value={{ i.id }}>{{ i.Subject }}</option>
-          {%endfor%}
+            <option value="{{ i.id }}">{{ i.Subject }}</option>
+          {% endfor %}
         </select>
       </td>
     </tr>
+
     <tr>
-      <td>slot_10_11</td>
-      <td>
-        <select name='slot_10_11'>
+      <td style="padding: 12px 16px;">slot_10_11</td>
+      <td style="padding: 12px 16px;">
+        <select name='slot_10_11' style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #ccc;">
           {% for i in subjects %}
-          <option value={{ i.id }}>{{ i.Subject }}</option>
-          {%endfor%}
+            <option value="{{ i.id }}">{{ i.Subject }}</option>
+          {% endfor %}
         </select>
       </td>
     </tr>
+
     <tr>
-      <td>slot_11_12</td>
-      <td>
-        <select name='slot_11_12'>
+      <td style="padding: 12px 16px;">slot_11_12</td>
+      <td style="padding: 12px 16px;">
+        <select name='slot_11_12' style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #ccc;">
           {% for i in subjects %}
-          <option value={{ i.id }}>{{ i.Subject }}</option>
-          {%endfor%}
+            <option value="{{ i.id }}">{{ i.Subject }}</option>
+          {% endfor %}
         </select>
       </td>
     </tr>
+
     <tr>
-      <td>slot_12_1</td>
-      <td>
-        <select name='slot_12_1'>
+      <td style="padding: 12px 16px;">slot_12_1</td>
+      <td style="padding: 12px 16px;">
+        <select name='slot_12_1' style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #ccc;">
           {% for i in subjects %}
-          <option value={{ i.id }}>{{ i.Subject }}</option>
-          {%endfor%}
+            <option value="{{ i.id }}">{{ i.Subject }}</option>
+          {% endfor %}
         </select>
       </td>
     </tr>
+
     <tr>
-      <td>slot_2_3</td>
-      <td>
-        <select name='slot_2_3'>
+      <td style="padding: 12px 16px;">slot_2_3</td>
+      <td style="padding: 12px 16px;">
+        <select name='slot_2_3' style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #ccc;">
           {% for i in subjects %}
-          <option value={{ i.id }}>{{ i.Subject }}</option>
-          {%endfor%}
+            <option value="{{ i.id }}">{{ i.Subject }}</option>
+          {% endfor %}
         </select>
       </td>
     </tr>
-      
+
     <tr>
-      <td colspan="2"><div align="center">
-        <input type="submit" name="Submit" value="ADD" />
-      </div></td>
+      <td colspan="2" style="text-align:center; padding: 16px;">
+        <input type="submit" name="Submit" value="ADD" style="background-color: #6a1b9a; color: white; padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; transition: background-color 0.3s;">
+      </td>
     </tr>
   </table>
 </form>
-{#</body>#}
-{#</html>#}
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f3e5f5, #e1bee7); /* Lavender gradient */
+    min-height: 100vh;
+    margin: 0;
+    padding: 40px;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #4a148c; /* Darker purple on hover */
+  }
+
+  select {
+    font-size: 14px;
+  }
+</style>
+
 {% endblock %}

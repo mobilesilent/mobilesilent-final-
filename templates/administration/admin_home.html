@@ -7,50 +7,75 @@
     <style>
       body {
         margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: #f4f6f8;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to right, #f3e5f5, #e1bee7); /* Lavender theme */
       }
 
       .navbar {
-        background-color: #007bff;
+        background-color: #6a1b9a; /* Dark purple */
         padding: 14px 20px;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
       }
 
       .navbar a {
         color: white;
         text-decoration: none;
-        padding: 10px 16px;
-        margin: 4px;
-        border-radius: 4px;
-        transition: background 0.3s;
+        padding: 12px 20px;
+        margin: 6px;
+        border-radius: 6px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        background-color: #6a1b9a; /* Matching navbar */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       }
 
       .navbar a:hover {
-        background-color: #0056b3;
+        background-color: #4a148c; /* Darker purple on hover */
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       }
 
       .content {
         max-width: 900px;
-        margin: 40px auto;
-        background: #fff;
-        padding: 30px;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 50px auto;
+        background: #ffffff;
+        padding: 40px 50px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         text-align: center;
+        transition: transform 0.3s;
+      }
+
+      .content:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
       }
 
       h1 {
-        color: #333;
+        color: #6a1b9a; /* Purple heading */
+        font-size: 32px;
+        margin-bottom: 15px;
+      }
+
+      p {
+        font-size: 18px;
+        color: #555;
       }
 
       @media (max-width: 600px) {
         .navbar {
           flex-direction: column;
           align-items: center;
+        }
+
+        .navbar a {
+          width: 80%;
+          text-align: center;
         }
       }
     </style>
@@ -64,16 +89,7 @@
       <a href="/teacher">Teacher</a>
       <a href="/select_class1">Manage Timetable</a>
       <a href="Select_class">Time Table</a>
-
-
       <a href="/">Logout</a>
-      <!-- <a href="/ManageTeacher">add and manage teacher</a> -->
-      <!-- <a href="ManageTimetable">Timetable</a>
-    <a href="Timing">Timing</a>
-    <a href="View_timetable">View Timetable</a>
-    <a href="Timetable_new">Timetable_new</a>
-    <a href="Select_class">Select_class</a>
- -->
     </div>
 
     <div class="content">

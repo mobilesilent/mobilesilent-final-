@@ -1,40 +1,114 @@
-{#<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">#}
-{#<html xmlns="http://www.w3.org/1999/xhtml">#}
-{#<head>#}
-{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
-{#<title>Untitled Document</title>#}
-{#</head>#}
-{##}
-{#<body>#}
-    {% block body %}
-    
-    <form id="form1" name="form1" method="get" action="{% url 'add_class' %}#about">
-      <table width="200" border="1" class="table table-dark table-hover">
-        <tr>
-          <td>SL.NO</td>
-          <td>ClassName</td>    
-          <td>Department</td>
-          <!-- <td>Semester</td> -->
-    
-          <td>&nbsp;</td>
-        </tr>
-          {% for i in obj %}
-        <tr>
-          <td>&nbsp;{{ i.id }}</td>
-          <td>&nbsp;{{ i.ClassName }}</td>
-          <td>&nbsp;{{ i.department.department }}</td>
-           <!-- <td>&nbsp;{{ i.sem }}</td>  -->
-          <td>&nbsp;
-          <a href="{% url 'delete_class' class_id=i.id %}#about">DELETE</a></td>
-        </tr>
-          {% endfor %}
-        <tr>
-          <td colspan="5"><div align="center">
-            <input type="submit" name="Submit" value="ADD" />
-          </div></td>
-        </tr>
-      </table>
-    </form>
-    {#</body>#}
-    {#</html>#}
-    {% endblock %}
+{% block body %}
+
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(135deg, #f3e5f5, #e1bee7); /* Lavender gradient */
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 20px;
+    }
+
+    form {
+        background: #ffffff;
+        padding: 20px 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 800px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: auto;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    th, td {
+        padding: 12px 15px;
+        text-align: left;
+    }
+
+    thead {
+        background-color: #6a1b9a; /* Dark purple header */
+        color: #ffffff;
+        text-align: center;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f3e5f5; /* Light lavender */
+    }
+
+    tbody tr:nth-child(odd) {
+        background-color: #e1bee7; /* Slightly darker lavender */
+    }
+
+    tbody tr:hover {
+        background-color: #d1c4e9; /* Highlight on hover */
+        transition: background-color 0.3s;
+    }
+
+    a {
+        color: #6a1b9a; /* Dark purple links */
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    input[type="submit"] {
+        background-color: #6a1b9a; /* Dark purple button */
+        color: white;
+        padding: 10px 25px;
+        border: none;
+        border-radius: 6px;
+        font-size: 15px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #4a148c; /* Darker purple */
+        transform: scale(1.05);
+    }
+</style>
+
+<form id="form1" name="form1" method="get" action="{% url 'add_class' %}#about">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>SL.NO</th>
+        <th>ClassName</th>
+        <th>Department</th>
+        <!-- <th>Semester</th> -->
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in obj %}
+      <tr>
+        <td>{{ i.id }}</td>
+        <td>{{ i.ClassName }}</td>
+        <td>{{ i.department.department }}</td>
+        <!-- <td>{{ i.sem }}</td> -->
+        <td><a href="{% url 'delete_class' class_id=i.id %}#about">DELETE</a></td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td colspan="4" style="text-align:center;">
+          <input type="submit" name="Submit" value="ADD" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+
+{% endblock %}

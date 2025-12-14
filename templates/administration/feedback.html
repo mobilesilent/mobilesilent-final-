@@ -7,14 +7,15 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f6f8;
+      background: linear-gradient(135deg, #f3e5f5, #e1bee7); /* Lavender gradient */
       margin: 0;
       padding: 40px;
+      min-height: 100vh;
     }
 
     h2 {
       text-align: center;
-      color: #333;
+      color: #6a1b9a; /* Dark purple heading */
       margin-bottom: 30px;
     }
 
@@ -23,23 +24,32 @@
       max-width: 900px;
       margin: 0 auto;
       border-collapse: collapse;
-      background-color: #fff;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      background-color: #ffffff; /* White table background */
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     }
 
     th, td {
       padding: 14px 18px;
-      border-bottom: 1px solid #ddd;
       text-align: left;
     }
 
     th {
-      background-color: #007bff;
+      background-color: #6a1b9a; /* Dark purple header */
       color: white;
     }
 
-    tr:hover {
-      background-color: #f1f1f1;
+    tbody tr:nth-child(even) {
+      background-color: #f3e5f5; /* Light lavender even rows */
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: #e1bee7; /* Slightly darker lavender odd rows */
+    }
+
+    tbody tr:hover {
+      background-color: #d1c4e9; /* Highlight row on hover */
     }
 
     @media (max-width: 600px) {
@@ -68,12 +78,11 @@
     <tbody>
       {% for i in val %}
       <tr>
-        <td>{{i.date}}
-        <td>{{i.user_id.name}}</td>
-        <td>{{i.feedback}}</td>
+        <td>{{ i.date }}</td>
+        <td>{{ i.user_id.name }}</td>
+        <td>{{ i.feedback }}</td>
       </tr>
       {% endfor %}
-      <!-- Add more rows as needed -->
     </tbody>
   </table>
 

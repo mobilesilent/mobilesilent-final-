@@ -1,29 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>College Login Page</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #f3e5f5, #e1bee7); /* Lavender gradient */
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+    }
+
+    .login-container {
+        background: #ffffff;
+        padding: 40px 50px;
+        border-radius: 15px;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        max-width: 450px;
+        width: 100%;
+        text-align: center;
+        position: relative;
+    }
+
+    /* College Logo/Image at top */
+    .login-container img {
+        width: 120px;
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        color: #6a1b9a;
+        margin-bottom: 25px;
+    }
+
+    label {
+        font-weight: bold;
+        color: #6a1b9a;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 12px 15px;
+        margin: 8px 0 15px 0;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 15px;
+    }
+
+    .password-container {
+        position: relative;
+    }
+
+    .toggle-password {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #6a1b9a;
+        font-size: 16px;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        background-color: #6a1b9a;
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #4a148c;
+    }
+
+    .links {
+        margin-top: 15px;
+    }
+
+    .links a {
+        color: #6a1b9a;
+        text-decoration: none;
+        font-weight: bold;
+        margin: 0 10px;
+    }
+
+    .links a:hover {
+        text-decoration: underline;
+    }
+
+    /* Optional: Add background decorative shapes */
+    .login-container::before {
+        content: '';
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        background: rgba(106, 27, 154, 0.1);
+        border-radius: 50%;
+        top: -60px;
+        right: -60px;
+        z-index: 0;
+    }
+
+    .login-container::after {
+        content: '';
+        position: absolute;
+        width: 80px;
+        height: 80px;
+        background: rgba(106, 27, 154, 0.1);
+        border-radius: 50%;
+        bottom: -40px;
+        left: -40px;
+        z-index: 0;
+    }
+
+</style>
 </head>
-<body style="margin-left: 15cm;">
+
+<body>
+<div class="login-container">
+    <!-- College Logo -->
+    <img src="college_logo.png" alt="College Logo">
+
     <h1>Login Page</h1>
 
     <form action="" method="post">
-         {% csrf_token %}
-        <table>
-            <tr>
-                <td><label for="username">User name:</label></td>
-                <td><input type="text" name="username" id="username" required></td>
-            </tr>
-            <tr>
-                <td><label for="password">Password:</label></td>
-                <td><input type="password" name="password" id="password" required></td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="Login"></td>
-                <td><a href="/TeacherRegister">Register</a></td>
-            </tr>
-        </table>
+        {% csrf_token %}
+        <div>
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" required>
+        </div>
+        <div class="password-container">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required>
+            <span class="toggle-password" onclick="togglePassword()">👁️</span>
+        </div>
+        <input type="submit" value="Login">
     </form>
+
+    <div class="links">
+        <a href="/TeacherRegister">Register</a> |
+        <a href="/forgot-password">Forgot Password?</a>
+    </div>
+</div>
+
+<script>
+function togglePassword() {
+    const passwordInput = document.getElementById('password');
+    const toggleIcon = document.querySelector('.toggle-password');
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.textContent = '🙈';
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.textContent = '👁️';
+    }
+}
+</script>
 </body>
 </html>

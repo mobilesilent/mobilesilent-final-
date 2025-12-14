@@ -3,89 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Department View</title>
     <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f6f8;
-      padding: 40px;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f3e5f5, #e1bee7); /* Lavender gradient */
+            padding: 40px;
+            min-height: 100vh;
+            margin: 0;
+        }
 
-    table {
-      width: 100%;
-      max-width: 800px;
-      margin: 0 auto;
-      border-collapse: collapse;
-      background-color: #fff;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
+        table {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #ffffff; /* White table background */
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            animation: fadeIn 1s ease-in-out;
+        }
 
-    th, td {
-      padding: 12px 16px;
-      border-bottom: 1px solid #ddd;
-      text-align: left;
-    }
+        th, td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
 
-    th {
-      background-color: #007bff;
-      color: white;
-    }
+        th {
+            background-color: #6a1b9a; /* Dark purple header */
+            color: white;
+        }
 
-    tr:hover {
-      background-color: #f1f1f1;
-    }
+        tbody tr:nth-child(even) {
+            background-color: #f3e5f5; /* Light lavender */
+        }
 
-    .reply-btn {
-      background-color: #28a745;
-      color: white;
-      padding: 8px 14px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 14px;
-    }
+        tbody tr:nth-child(odd) {
+            background-color: #e1bee7; /* Slightly darker lavender */
+        }
 
-    .reply-btn:hover {
-      background-color: #218838;
-    }
-    .add-btn {
-  background-color: #00ff0d;   
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.3s;
-}
+        tbody tr:hover {
+            background-color: #d1c4e9; /* Hover effect */
+        }
 
-.add-btn:hover {
-  background-color: #00b31e;
-}
+        .delete-btn {
+            background-color: #d32f2f; /* Red delete button */
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
 
-  </style>
+        .delete-btn:hover {
+            background-color: #b71c1c;
+            transform: scale(1.05);
+        }
+
+        .add-btn {
+            background-color: #6a1b9a; /* Dark purple add button */
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s, transform 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .add-btn:hover {
+            background-color: #4a148c;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+    </style>
 </head>
 <body>
     <table>
         <thead>
-      <tr>
-        <th>Department</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for i in department %}
-        <tr>
-            <td>{{ i.department }}</td>
-              <td><a href="DeleteDepartment/{{ i.id }}" class="delete-btn">Delete</a></td>
-        </tr>
-        {% endfor %}
-    </tbody>
-    <tr>
-        <td>
-    <a href="/AddDepartment" class="add-btn">AddNew</a>
-</td>
-
-    </tr>
+            <tr>
+                <th>Department</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in department %}
+            <tr>
+                <td>{{ i.department }}</td>
+                <td><a href="DeleteDepartment/{{ i.id }}" class="delete-btn">Delete</a></td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="2" style="text-align:center;">
+                    <a href="/AddDepartment" class="add-btn">Add New</a>
+                </td>
+            </tr>
+        </tbody>
     </table>
 </body>
 </html>
