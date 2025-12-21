@@ -7,7 +7,7 @@
 <style>
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #f3e5f5, #e1bee7); /* Lavender gradient */
+        background: linear-gradient(135deg, #f3e5f5, #e1bee7);
         min-height: 100vh;
         display: flex;
         justify-content: center;
@@ -26,7 +26,6 @@
         position: relative;
     }
 
-    /* College Logo/Image at top */
     .login-container img {
         width: 120px;
         height: auto;
@@ -41,6 +40,9 @@
     label {
         font-weight: bold;
         color: #6a1b9a;
+        display: block;
+        text-align: left;
+        margin-bottom: 5px;
     }
 
     input[type="text"],
@@ -51,20 +53,6 @@
         border-radius: 8px;
         border: 1px solid #ccc;
         font-size: 15px;
-    }
-
-    .password-container {
-        position: relative;
-    }
-
-    .toggle-password {
-        position: absolute;
-        right: 15px;
-        top: 50%;
-        transform: translateY(-50%);
-        cursor: pointer;
-        color: #6a1b9a;
-        font-size: 16px;
     }
 
     input[type="submit"] {
@@ -98,7 +86,6 @@
         text-decoration: underline;
     }
 
-    /* Optional: Add background decorative shapes */
     .login-container::before {
         content: '';
         position: absolute;
@@ -122,13 +109,11 @@
         left: -40px;
         z-index: 0;
     }
-
 </style>
 </head>
 
 <body>
 <div class="login-container">
-    <!-- College Logo -->
     <img src="college_logo.png" alt="College Logo">
 
     <h1>Login Page</h1>
@@ -139,11 +124,12 @@
             <label for="username">Username</label>
             <input type="text" name="username" id="username" required>
         </div>
-        <div class="password-container">
+
+        <div>
             <label for="password">Password</label>
             <input type="password" name="password" id="password" required>
-            <span class="toggle-password" onclick="togglePassword()">👁️</span>
         </div>
+
         <input type="submit" value="Login">
     </form>
 
@@ -152,19 +138,5 @@
         <a href="/forgot-password">Forgot Password?</a>
     </div>
 </div>
-
-<script>
-function togglePassword() {
-    const passwordInput = document.getElementById('password');
-    const toggleIcon = document.querySelector('.toggle-password');
-    if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-        toggleIcon.textContent = '🙈';
-    } else {
-        passwordInput.type = 'password';
-        toggleIcon.textContent = '👁️';
-    }
-}
-</script>
 </body>
 </html>
