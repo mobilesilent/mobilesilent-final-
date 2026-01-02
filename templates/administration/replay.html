@@ -4,25 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Reply to Complaint</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f6f8;
+      background: linear-gradient(135deg, #f3e5f5, #e1bee7);
       padding: 40px;
+      min-height: 100vh;
     }
 
     .container {
       max-width: 800px;
       margin: 0 auto;
-      background-color: #fff;
+      background-color: #ffffff;
       padding: 30px 40px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     }
 
     h2 {
       text-align: center;
-      color: #333;
+      color: #6a1b9a;
       margin-bottom: 30px;
     }
 
@@ -34,50 +36,51 @@
       display: block;
       margin-bottom: 6px;
       font-weight: bold;
-      color: #333;
+      color: #6a1b9a;
     }
 
-    input[type="text"],
-    input[type="date"],
     textarea {
       width: 100%;
-      padding: 10px 12px;
-      font-size: 16px;
+      padding: 12px;
+      font-size: 15px;
       border: 1px solid #ccc;
-      border-radius: 4px;
+      border-radius: 6px;
       box-sizing: border-box;
+      resize: vertical;
+      height: 140px;
     }
 
-    textarea {
-      resize: vertical;
-      height: 120px;
+    textarea:focus {
+      border-color: #6a1b9a;
+      outline: none;
     }
 
     button {
-      padding: 10px 18px;
-      font-size: 16px;
+      padding: 10px 20px;
+      font-size: 15px;
       border: none;
-      border-radius: 4px;
+      border-radius: 6px;
       cursor: pointer;
       margin-right: 10px;
+      transition: background-color 0.3s;
     }
 
     .submit-btn {
-      background-color: #007bff;
+      background-color: #6a1b9a;
       color: white;
     }
 
     .submit-btn:hover {
-      background-color: #0056b3;
+      background-color: #4a148c;
     }
 
     .back-btn {
-      background-color: #6c757d;
+      background-color: #9575cd;
       color: white;
     }
 
     .back-btn:hover {
-      background-color: #5a6268;
+      background-color: #7e57c2;
     }
   </style>
 </head>
@@ -85,15 +88,19 @@
 
   <div class="container">
     <h2>Reply to Complaint</h2>
+
     <form method="post">
       {% csrf_token %}
-       <div class="form-group">
+
+      <div class="form-group">
         <label for="reply">Your Reply</label>
         <textarea id="reply" name="reply" placeholder="Type your reply here..." required></textarea>
       </div>
 
       <button type="submit" class="submit-btn">Send Reply</button>
-      <a href="complaints.html"><button type="button" class="back-btn">Back to Complaints</button></a>
+      <a href="complaints.html">
+        <button type="button" class="back-btn">Back to Complaints</button>
+      </a>
     </form>
   </div>
 

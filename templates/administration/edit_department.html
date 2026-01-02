@@ -4,15 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Department Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #6a1b9a;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        input[type="submit"] {
+            background-color: #6a1b9a;
+            color: white;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #4a148c;
+        }
+    </style>
 </head>
 <body>
 
     <form action="#" method="post">
-          {% csrf_token %}
+        {% csrf_token %}
+
         <div class="form-group">
             <label for="department">Department</label>
             <input type="text" id="department" name="department" required />
         </div>
+
         <div>
             <input type="submit" value="Add">
         </div>

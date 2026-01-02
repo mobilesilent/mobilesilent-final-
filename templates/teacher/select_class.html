@@ -1,33 +1,88 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-{#<html xmlns="http://www.w3.org/1999/xhtml">#}
-{#<head>#}
-{#<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />#}
-{#<title>Untitled Document</title>#}
-{#</head>#}
+{% block body %}
 
-{#<body>#}
-    {% block body %}
-    
-    <form id="form1" name="form1" method="post" action="{% url 'view_timetable' %}#about">
-      {% csrf_token %}
-      <table width="200" border="1" class="table table-dark table-hover">
-        <tr>
-          <th>CLASS</th>
-          <td>
-            <select name="class_id" style="width: 200px;">
-              {% for i in obj %}
-              <option value="{{i.id}}">{{ i.ClassName }}</option>
-              {% endfor %}  
-            </select>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2" align="center">
-            <input type="submit" value="enter">
-          </td>
-        </tr>
-      </table>
-    </form>
-    {#</body>#}
-    {#</html>#}
-    {% endblock %}
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+    padding: 40px;
+    min-height: 100vh;
+  }
+
+  .form-wrapper {
+    max-width: 500px;
+    margin: auto;
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th {
+    background-color: #6a1b9a;
+    color: white;
+    padding: 12px;
+    text-align: left;
+  }
+
+  td {
+    padding: 12px;
+    color: #6a1b9a;
+    font-weight: bold;
+  }
+
+  select {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+
+  input[type="submit"] {
+    background-color: #6a1b9a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #4a148c;
+  }
+</style>
+
+<div class="form-wrapper">
+  <form id="form1" name="form1" method="post" action="{% url 'view_timetable' %}#about">
+    {% csrf_token %}
+
+    <table>
+      <tr>
+        <th>CLASS</th>
+        <td>
+          <select name="class_id">
+            {% for i in obj %}
+              <option value="{{ i.id }}">{{ i.ClassName }}</option>
+            {% endfor %}
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <td colspan="2" align="center">
+          <input type="submit" value="Enter">
+        </td>
+      </tr>
+    </table>
+
+  </form>
+</div>
+
+{% endblock %}

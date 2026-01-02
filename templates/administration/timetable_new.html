@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -93,5 +93,102 @@
         {% endfor %}
     </tbody>
 </table>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>College Timetable</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f3e5f5, #e1bee7); /* Same lavender gradient */
+    padding: 40px;
+    min-height: 100vh;
+  }
+
+  h1 {
+    text-align: center;
+    color: #6a1b9a; /* Same heading color */
+    margin-bottom: 30px;
+  }
+
+  table {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+
+  th, td {
+    padding: 12px 16px;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  th {
+    background-color: #6a1b9a; /* Dark purple header */
+    color: white;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #f3e5f5; /* Light lavender */
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: #e1bee7; /* Slightly darker lavender */
+  }
+
+  tbody tr:hover {
+    background-color: #d1c4e9; /* Hover highlight */
+  }
+
+  @media (max-width: 600px) {
+    table, th, td {
+      font-size: 12px;
+    }
+    body {
+      padding: 20px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<h1>College Timetable</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>9:00 - 10:00</th>
+      <th>10:00 - 11:00</th>
+      <th>11:15 - 12:05</th>
+      <th>12:05 - 12:50</th>
+      <th>2:00 - 3:00</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for entry in timetable_entries %}
+    <tr>
+      <td>{{ entry.day }}</td>
+      <td>{{ entry.slot_9_10.Subject }}</td>
+      <td>{{ entry.slot_10_11.Subject }}</td>
+      <td>{{ entry.slot_11_12.Subject }}</td>
+      <td>{{ entry.slot_1_2.Subject }}</td>
+      <td>{{ entry.slot_2_3.Subject }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
 </body>
 </html>
