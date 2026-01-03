@@ -4,65 +4,103 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>View Feedback</title>
+
   <style>
+    :root {
+        --primary-dark: rgb(11, 15, 76);
+        --primary-medium: rgb(40, 46, 150);
+        --primary-light: rgb(80, 88, 200);
+        --card-bg: rgba(255, 255, 255, 0.08);
+        --card-border: rgba(255, 255, 255, 0.15);
+        --text-primary: #ffffff;
+        --text-secondary: rgba(255, 255, 255, 0.8);
+        --github-blue: #2f81f7;
+        --gradient: radial-gradient(circle at top right,
+                    var(--primary-dark) 0%,
+                    var(--primary-medium) 50%,
+                    var(--primary-dark) 100%);
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #f3e5f5, #e1bee7); /* Lavender gradient */
-      margin: 0;
-      padding: 40px;
-      min-height: 100vh;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: var(--gradient);
+        color: var(--text-primary);
+        margin: 0;
+        padding: 40px 20px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     h2 {
-      text-align: center;
-      color: #6a1b9a; /* Dark purple heading */
-      margin-bottom: 30px;
+        margin-bottom: 30px;
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: 1px;
     }
 
     table {
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto;
-      border-collapse: collapse;
-      background-color: #ffffff; /* White table background */
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 1000px;
+        border-collapse: collapse;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     }
 
-    th, td {
-      padding: 14px 18px;
-      text-align: left;
+    thead {
+        background: rgba(255, 255, 255, 0.1);
     }
 
     th {
-      background-color: #6a1b9a; /* Dark purple header */
-      color: white;
+        padding: 18px 20px;
+        text-align: left;
+        color: var(--text-primary);
+        font-weight: 600;
+        font-size: 15px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    td {
+        padding: 16px 20px;
+        color: var(--text-secondary);
+        font-size: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     tbody tr:nth-child(even) {
-      background-color: #f3e5f5; /* Light lavender even rows */
+        background-color: rgba(255, 255, 255, 0.02);
     }
 
     tbody tr:nth-child(odd) {
-      background-color: #e1bee7; /* Slightly darker lavender odd rows */
+        background-color: rgba(255, 255, 255, 0.04);
     }
 
     tbody tr:hover {
-      background-color: #d1c4e9; /* Highlight row on hover */
+        background-color: rgba(255, 255, 255, 0.1);
     }
 
-    @media (max-width: 600px) {
-      table, th, td {
-        font-size: 14px;
-      }
+    @media (max-width: 768px) {
+        table {
+            font-size: 14px;
+        }
 
-      body {
-        padding: 20px;
-      }
+        th, td {
+            padding: 12px 10px;
+        }
+
+        body {
+            padding: 20px 10px;
+        }
     }
   </style>
 </head>
+
 <body>
 
   <h2>Feedback View</h2>

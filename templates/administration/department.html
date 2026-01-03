@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -102,6 +102,141 @@ select {
             <input type="submit" value="Add">
         </div>
     </form>
+
+</body>
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Department Form</title>
+
+  <style>
+    :root {
+        --primary-dark: rgb(11, 15, 76);
+        --primary-medium: rgb(40, 46, 150);
+        --primary-light: rgb(80, 88, 200);
+        --card-bg: rgba(255, 255, 255, 0.08);
+        --card-border: rgba(255, 255, 255, 0.15);
+        --text-primary: #ffffff;
+        --text-secondary: rgba(255, 255, 255, 0.8);
+        --github-blue: #2f81f7;
+        --gradient: radial-gradient(circle at top right,
+                    var(--primary-dark) 0%,
+                    var(--primary-medium) 50%,
+                    var(--primary-dark) 100%);
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: var(--gradient);
+        color: var(--text-primary);
+        margin: 0;
+        padding: 40px 20px;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 30px;
+    }
+
+    form {
+        width: 100%;
+        max-width: 500px;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 14px;
+        padding: 30px 40px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--text-primary);
+        font-weight: 600;
+        font-size: 15px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 10px 14px;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        background-color: rgba(255, 255, 255, 0.05);
+        color: var(--text-primary);
+        font-size: 14px;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+
+    input[type="text"]:focus {
+        border-color: var(--github-blue);
+        box-shadow: 0 0 8px rgba(47, 129, 247, 0.5);
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        background: linear-gradient(135deg, var(--primary-light), var(--github-blue));
+        color: white;
+        padding: 12px 18px;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(47, 129, 247, 0.4);
+        background: linear-gradient(135deg, var(--github-blue), var(--primary-light));
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+        form {
+            padding: 25px 20px;
+        }
+    }
+  </style>
+</head>
+
+<body>
+
+  <form action="#" method="post">
+    {% csrf_token %}
+
+    <h2>Add Department</h2>
+
+    <div class="form-group">
+      <label for="department">Department</label>
+      <input type="text" id="department" name="department" required />
+    </div>
+
+    <div>
+      <input type="submit" value="Add">
+    </div>
+  </form>
 
 </body>
 </html>

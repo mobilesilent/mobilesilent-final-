@@ -6,22 +6,41 @@
     <title>Department Form</title>
 
     <style>
+        :root {
+            --primary-dark: rgb(11, 15, 76);
+            --primary-medium: rgb(40, 46, 150);
+            --primary-light: rgb(80, 88, 200);
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --card-border: rgba(255, 255, 255, 0.15);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --github-blue: #2f81f7;
+            --gradient: radial-gradient(circle at top right,
+                        var(--primary-dark) 0%,
+                        var(--primary-medium) 50%,
+                        var(--primary-dark) 100%);
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--gradient);
             min-height: 100vh;
+            margin: 0;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
 
         form {
-            background-color: #ffffff;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
             padding: 30px 40px;
-            border-radius: 12px;
             width: 100%;
             max-width: 400px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.8s ease-in-out;
         }
 
         .form-group {
@@ -31,32 +50,57 @@
         label {
             display: block;
             margin-bottom: 8px;
-            color: #6a1b9a;
-            font-weight: bold;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 15px;
         }
 
         input[type="text"] {
             width: 100%;
-            padding: 10px 12px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
+            padding: 10px 14px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
             font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--github-blue);
+            box-shadow: 0 0 8px rgba(47, 129, 247, 0.5);
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
         input[type="submit"] {
-            background-color: #6a1b9a;
+            background: linear-gradient(135deg, var(--primary-light), var(--github-blue));
             color: white;
             padding: 10px 16px;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 15px;
+            font-weight: 500;
             width: 100%;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
         }
 
         input[type="submit"]:hover {
-            background-color: #4a148c;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(47, 129, 247, 0.4);
+            background: linear-gradient(135deg, var(--github-blue), var(--primary-light));
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 480px) {
+            form {
+                padding: 25px 20px;
+            }
         }
     </style>
 </head>
